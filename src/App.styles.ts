@@ -1,19 +1,26 @@
 import styled from 'styled-components';
 import colors from './styles/colors';
+import lakeImage from '/images/lake-purple.jpg';
 
 export const AppWrapper = styled.div`
   position: relative;
   z-index: 1;
   font-family: 'Roboto Mono', monospace;
-  padding: 0 370px;
-  width: 100%;
-  height: 1800px;
+  /* padding: 0 370px; */
+  /* width: 100%;
+  height: 1800px; */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   overflow: hidden;
-  background-color: ${colors.seasalt};
+  /* background-color: ${colors.seasalt}; */
+  background-image: url(${lakeImage});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  min-height: 100vh;
 `;
 
 export const AppMiddleColumn = styled.div`
@@ -24,7 +31,7 @@ export const AppMiddleColumn = styled.div`
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: ${colors.eerieBlack};
+  /* background-color: ${colors.eerieBlack}; */
 `;
 
 export const CenterSectionWrapper = styled.div`

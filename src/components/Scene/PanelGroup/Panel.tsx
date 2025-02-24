@@ -1,12 +1,13 @@
-import { useMemo, useRef } from 'react';
+import { useRef } from 'react';
 import { useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 
 interface Props {
   position: [number, number, number];
   rotation: THREE.Euler;
-  size: number;
-  scale: [number, number, number];
+  // size: number;
+  size: [number, number, number];
+  // scale: [number, number, number];
   cushionMaterialProps: {
     color: string;
     metalness: number;
@@ -20,22 +21,15 @@ interface Props {
   },
 }
 
-const Cushion = ({ position, rotation, size, scale, cushionMaterialProps }: Props) => {
-  const shapeOneRef = useRef<THREE.Mesh>(null); 
-
-  const texture = useTexture(cushionMaterialProps.envMapImage);
-
-  const envMap = useMemo(() => {
-    texture.mapping = THREE.EquirectangularReflectionMapping;
-    texture.needsUpdate = true;
-    return texture;
-  }, [texture]);
+const Panel = ({ position, rotation, size, cushionMaterialProps }: Props) => {
+  const shapeOneRef = useRef<THREE.Mesh>(null);
 
   return (
-    <mesh ref={shapeOneRef} position={position} rotation={rotation} scale={scale} renderOrder={1}>
-      <sphereGeometry args={[size, 32, 32]} />
+    <mesh ref={shapeOneRef} position={position} rotation={rotation} renderOrder={1}>
+      {/* <sphereGeometry args={[size, 32, 32]} /> */}
+      {/* <cylinderGeometry args={[size, size, 5, 32]} /> */}
+      <boxGeometry args={size} />
       <meshStandardMaterial
-        envMap={envMap}
         metalness={cushionMaterialProps.metalness}
         roughness={cushionMaterialProps.roughness}
         opacity={cushionMaterialProps.opacity}
@@ -49,4 +43,4 @@ const Cushion = ({ position, rotation, size, scale, cushionMaterialProps }: Prop
   );
 };
 
-export default Cushion;
+export default Panel;

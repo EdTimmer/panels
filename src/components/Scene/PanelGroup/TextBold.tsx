@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState, useRef } from 'react';
 import * as THREE from 'three';
 import { Font, FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
+import { extend, useFrame } from '@react-three/fiber';
 
 interface Props {
   position: [number, number, number];
@@ -9,6 +10,7 @@ interface Props {
   text: string;
   size: number;
   depth: number;
+  scale: [number, number, number];
   textMaterialProps: {
     color: string;
     opacity: number;
@@ -19,13 +21,13 @@ interface Props {
   }
 }
 
-const Text = ({ position, rotation, text, size, depth, textMaterialProps }: Props) => {
+const TextBold = ({ position, rotation, text, size, depth, scale, textMaterialProps }: Props) => {
   const meshRef = useRef<THREE.Mesh>(null!);
-  const [font, setFont] = useState<Font | null>(null);
+  const [font, setFont] = useState<Font | null>(null);    
 
   useEffect(() => {
     const loader = new FontLoader();
-    loader.load('/fonts/open_sans_light_regular.typeface.json', (loadedFont) => {
+    loader.load('/fonts/comfortaa_bold.json', (loadedFont) => {
       setFont(loadedFont);
     });
   }, []);
@@ -58,8 +60,8 @@ const Text = ({ position, rotation, text, size, depth, textMaterialProps }: Prop
     if (!font || !textGeometry) return null;
 
   return (
-    <mesh ref={meshRef} geometry={textGeometry} rotation={rotation} position={position} renderOrder={2}>
-      <meshStandardMaterial 
+    <mesh ref={meshRef} geometry={textGeometry} scale={scale} rotation={rotation} position={position} renderOrder={2}>
+      {/* <meshStandardMaterial 
         metalness={textMaterialProps.metalness}
         roughness={textMaterialProps.roughness}
         color={textMaterialProps.color}
@@ -67,9 +69,21 @@ const Text = ({ position, rotation, text, size, depth, textMaterialProps }: Prop
         transparent
         emissive={textMaterialProps.emissive}
         emissiveIntensity={textMaterialProps.emissiveIntensity}
+      /> */}
+      <meshPhysicalMaterial
+        color={'#000'}
+        // color={'#f86efa'}
+        metalness={1}
+        roughness={0}
+        reflectivity={1}
+        clearcoat={1}     // Adds a clear coat layer
+        clearcoatRoughness={0.1}  // Polished surface
+        emissive={'#de77fd'}
+        emissiveIntensity={0}
       />
+
     </mesh>
   );
 };
 
-export default Text;
+export default TextBold;

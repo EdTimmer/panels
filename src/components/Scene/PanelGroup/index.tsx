@@ -3,36 +3,47 @@ import { useFrame } from '@react-three/fiber';
 import { Group, MathUtils } from 'three';
 import * as THREE from 'three';
 import { GUI } from 'lil-gui';
-import Cushion from './Cushion';
-import CushionCover from './CushionCover';
+import Panel from './Panel';
 import { listOfImages } from '../../../utilities/listOfImages';
 import Text from './Text';
+import TextLight from './TextLight';
+import TextSymbol from './TextSymbol';
+import Back from './Back';
+import { Caustics } from '@react-three/drei';
+import TextBold from './TextBold';
 
 interface Props {
-  isMouseEntered: boolean;
-  isFacingUser: boolean;
-  setIsFacingUser: (isFacingUser: boolean) => void;
+  position: [number, number, number];
   guiy: string;
 }
 
-function LogoTwoGroup({ isMouseEntered, isFacingUser, setIsFacingUser, guiy }: Props) {
-  const logoTwoGroupRef = useRef<Group>(null);
+function PanelGroup({ position, guiy }: Props) {
+  const panelGroupRef = useRef<Group>(null);
+
+  const [isMouseEntered, setIsMouseEntered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsMouseEntered(true);
+  }
+  const handleMouseLeave = () => {
+    setIsMouseEntered(false);
+  }
 
   // Set the initial rotation on mount only
   useEffect(() => {
     // const initialRotation = isFacingUser ? 0 : Math.PI;
-    if (logoTwoGroupRef.current) {
-      logoTwoGroupRef.current.rotation.y = isFacingUser ? 0 : Math.PI;
+    if (panelGroupRef.current) {
+      panelGroupRef.current.rotation.y = Math.PI;
     }
-  }, [isFacingUser]);
+  }, []);
 
     useFrame((state, delta) => {
-      if (logoTwoGroupRef.current) {
+      if (panelGroupRef.current) {
         // Apply a "breathing" effect on the X axis.
-        logoTwoGroupRef.current.rotation.x = Math.sin(state.clock.getElapsedTime() * 0.5) * 0.12;
+        panelGroupRef.current.rotation.x = Math.sin(state.clock.getElapsedTime() * 0.5) * 0.01;
   
         // Determine the starting rotation.
-        const initialRotation = isFacingUser ? 0 : Math.PI;
+        const initialRotation = Math.PI;
         // Set the target rotation: rotate an extra PI when the mouse enters.
         const targetY = isMouseEntered ? initialRotation + Math.PI : initialRotation;
         
@@ -41,15 +52,15 @@ function LogoTwoGroup({ isMouseEntered, isFacingUser, setIsFacingUser, guiy }: P
         const lerpFactor = 1 - Math.exp(-speed * delta);
         
         // Interpolate the current rotation towards the target rotation.
-        logoTwoGroupRef.current.rotation.y = MathUtils.lerp(
-          logoTwoGroupRef.current.rotation.y,
+        panelGroupRef.current.rotation.y = MathUtils.lerp(
+          panelGroupRef.current.rotation.y,
           targetY,
           lerpFactor
         );
   
         // Optionally, snap to target if very close.
-        if (Math.abs(logoTwoGroupRef.current.rotation.y - targetY) < 0.001) {
-          logoTwoGroupRef.current.rotation.y = targetY;
+        if (Math.abs(panelGroupRef.current.rotation.y - targetY) < 0.001) {
+          panelGroupRef.current.rotation.y = targetY;
         }
       }
     });
@@ -62,27 +73,27 @@ function LogoTwoGroup({ isMouseEntered, isFacingUser, setIsFacingUser, guiy }: P
     const textFolderRef = useRef<GUI | null>(null);
     const textControllersRef = useRef<Record<string, any>>({}); // Store the controllers in a ref
     const [textMaterialProps, setTextMaterialProps] = useState({
-      color: '#fff',
+      color: '#000',
       opacity: 1.0,
-      roughness: 0.2,       
-      metalness: 0.2,
+      roughness: 0,       
+      metalness: 1.0,
       emissive: '#fff',
-      emissiveIntensity: 0.2,
+      emissiveIntensity: 0,
     });
 
   // CUSHION GUI REFS
   const cushionFolderRef = useRef<GUI | null>(null);
   const cushionControllersRef = useRef<Record<string, any>>({}); // Store the controllers in a ref
   const [cushionMaterialProps, setCushionMaterialProps] = useState({
-    color: '#000',
+    color: '#fff',
     opacity: 1.0,
     roughness: 0,     
-    metalness: 0,
-    emissive: '#fff',
+    metalness: 1.0,
+    emissive: '#000',
     emissiveIntensity: 0.01,
     envMapIntensity: 1.0,
     envMapImages: listOfImages,
-    envMapImage: '/images/bw_1.png',
+    envMapImage: '/images/img_4.png',
   });
 
   // CUSHION COVER GUI REFS
@@ -102,22 +113,23 @@ function LogoTwoGroup({ isMouseEntered, isFacingUser, setIsFacingUser, guiy }: P
     guiTwo.domElement.style.position = 'absolute';
     guiTwo.domElement.style.right = '10px';
     guiTwo.domElement.style.top = guiy;
+    guiTwo.close();
 
     // ROTATION FOLDER
-    const rotationFolder = guiTwo.addFolder('Rotation');
-    rotationFolderRef.current = rotationFolder;
+    // const rotationFolder = guiTwo.addFolder('Rotation');
+    // rotationFolderRef.current = rotationFolder;
 
-    const localRotationProps = {
-      isFacingUser,
-    }
+    // const localRotationProps = {
+    //   isFacingUser,
+    // }
 
-    // add rotation controls for each property with a step increment of Math.PI
-    rotationControllersRef.current.isFacingUserController = rotationFolder
-      .add(localRotationProps, 'isFacingUser')
-      .name('Is Facing User')
-      .onChange((isFacingUser: boolean) => {
-        setIsFacingUser(isFacingUser);
-      });
+    // // add rotation controls for each property with a step increment of Math.PI
+    // rotationControllersRef.current.isFacingUserController = rotationFolder
+    //   .add(localRotationProps, 'isFacingUser')
+    //   .name('Is Facing User')
+    //   .onChange((isFacingUser: boolean) => {
+    //     setIsFacingUser(isFacingUser);
+    //   });
 
     // TEXT FOLDER
     const textFolder = guiTwo.addFolder('Text');
@@ -281,12 +293,29 @@ function LogoTwoGroup({ isMouseEntered, isFacingUser, setIsFacingUser, guiy }: P
   }, []);
 
   return (
-    <group position={[0, 0, 0]} scale={[1.0, 1.0, 1.0]} ref={logoTwoGroupRef}>
-      <Text text={'DP&I'} position={[0, 0, 0.3]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.5} textMaterialProps={textMaterialProps} />
-      <CushionCover size={0.925} scale={[1.7, 1.7, 0.4]} position={[0, 0, 0]} rotation={new THREE.Euler(0, 0, 0)} cushionCoverMaterialProps={cushionCoverMaterialProps} />
-      <Cushion size={0.9} scale={[1.7, 1.7, 0.4]} position={[0, 0, 0]} rotation={new THREE.Euler(0, 0, 0)} cushionMaterialProps={cushionMaterialProps} />
-    </group>    
+    <group>
+      <Back position={[position[0], position[1], position[2] - 1.0]} rotation={new THREE.Euler(0, 0, 0)} size={[1.4, 5.5]} scale={[1, 1, 1]} cushionMaterialProps={cushionMaterialProps} onPointerEnter={handleMouseEnter} onPointerLeave={handleMouseLeave} />
+    <group position={position} scale={[1.0, 1.0, 1.0]} ref={panelGroupRef}>      
+      <Text text={'O'} position={[0, 2, 0.36]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
+      <TextBold text={'O'} position={[0, 2, 0.35]} scale={[1.1, 1.1, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
+
+      <Text text={'R'} position={[0, 1, 0.36]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
+      <TextBold text={'R'} position={[0, 1, 0.35]} scale={[1.1, 1.1, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
+
+      <TextLight text={"I"} position={[0, 0, 0.37]} scale={[1, 0.8, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
+      <TextBold text={"I"} position={[0, 0, 0.36]} scale={[1.2, 0.8, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
+
+      <TextLight text={'O'} position={[0, -0.4, 0.35]} scale={[1, 1, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
+      <TextBold text={'O'} position={[0, -0.4, 0.34]} scale={[1.1, 1.1, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
+
+      <Text text={'N'} position={[0, -1.5, 0.36]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
+      <TextBold text={'N'} position={[0, -1.5, 0.35]} scale={[1.1, 1.1, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
+      {/* <TextSymbol text={'⏻'} position={[0, -2, 0.35]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} /> */}
+      {/* <Panel size={0.9} scale={[1, 1.7, 0.2]} position={[0, 0, 0]} rotation={new THREE.Euler(0, 0, 0)} cushionMaterialProps={cushionMaterialProps} /> */}
+      <Panel size={[1.4, 5.5, 0.15]} position={[0, 0, 0]} rotation={new THREE.Euler(0, 0, 0)} cushionMaterialProps={cushionMaterialProps} />
+    </group>
+    </group>
   );
 }
 
-export default LogoTwoGroup;
+export default PanelGroup;
