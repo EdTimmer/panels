@@ -42,7 +42,7 @@ const Panel = ({ position, rotation, size, cushionMaterialProps }: Props) => {
        <meshPhysicalMaterial
         clearcoat={1}  // Shiny surface effect
         transmission={1}  // Fully transparent
-        opacity={0.5}  // Fully opaque but will be transparent due to transmission
+        opacity={0.3}  // Fully opaque but will be transparent due to transmission
         // transparent={true}  // Enable transparency
         roughness={0}  // Smooth like glass
         reflectivity={0.5}  // Adjust reflection intensity

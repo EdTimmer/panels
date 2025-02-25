@@ -27,7 +27,8 @@ const Back = ({ position, rotation, size, scale, onPointerEnter, onPointerLeave 
   return (
     <mesh ref={shapeOneRef} position={position} rotation={rotation} scale={scale} renderOrder={1} onPointerEnter={onPointerEnter} onPointerLeave={onPointerLeave}>
       {/* <sphereGeometry args={[size, 32, 32]} /> */}
-      <planeGeometry args={size} />
+      {/* <planeGeometry args={size} /> */}
+      <boxGeometry args={size} />
       <meshPhysicalMaterial
         color={'red'}
         transmission={0}      // high transmission for translucency

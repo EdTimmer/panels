@@ -17,10 +17,10 @@ function App() {
     <AppWrapper>
       <AppMiddleColumn>
         <CenterSectionWrapper>
-          <Row>
+          {/* <Row> */}
             {/* <LogoOneWrapper guiy={'10px'} />         */}
-            <SceneWrapper guiy={'10px'} />
-          </Row>
+            <SceneWrapper />
+          {/* </Row> */}
 {/* 
           <Row>
             <LogoThreeWrapper guiy={'500px'} />

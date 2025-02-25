@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import colors from './styles/colors';
-import lakeImage from '/images/lake-purple.jpg';
+// import lakeImage from '/images/lake-purple.jpg';
+import japanImage from '/images/japan_9.jpg';
 
 export const AppWrapper = styled.div`
   position: relative;
@@ -15,7 +16,7 @@ export const AppWrapper = styled.div`
   align-items: center;
   overflow: hidden;
   /* background-color: ${colors.seasalt}; */
-  background-image: url(${lakeImage});
+  background-image: url(${japanImage});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -27,7 +28,7 @@ export const AppMiddleColumn = styled.div`
   position: relative;
   z-index: 1;
   /* padding-top: 10px; */
-  margin: 10px 0;
+  margin: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -79,7 +80,7 @@ export const LogoOneContainer = styled.div`
   /* border-radius: 30rem; */
   width: 35rem;
   height: 40rem;
-  cursor: pointer;
+  /* cursor: pointer; */
   /* margin-top: 20rem; */
   /* margin-left: 10rem; */
 `;
@@ -89,7 +90,7 @@ export const LogoTwoContainer = styled.div`
   /* border-radius: 30rem; */
   width: 35rem;
   height: 40rem;
-  cursor: pointer;
+  /* cursor: pointer; */
   /* margin-top: 20rem; */
 `;
 
@@ -98,7 +99,7 @@ export const ThreeDWebGroupContainer = styled.div`
   /* border-radius: 30rem; */
   width: 50rem;
   height: 25rem;
-  cursor: pointer;
+  /* cursor: pointer; */
   /* margin-right: 20rem; */
   /* margin-top: -20rem; */
 `;
@@ -108,7 +109,7 @@ export const DeloitteDigitalLogoContainer = styled.div`
   /* border-radius: 30rem; */
   width: 80rem;
   height: 40rem;
-  cursor: pointer;
+  /* cursor: pointer; */
 
   @media (max-width: 450px) {
     width: 45rem;
