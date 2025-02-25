@@ -30,3 +30,5 @@ function NeonSign() {
     </mesh>
   )
 }
+
+export default NeonSign;
