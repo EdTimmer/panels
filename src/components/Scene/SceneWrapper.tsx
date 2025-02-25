@@ -12,10 +12,6 @@ const SceneWrapper = () => {
         <PerspectiveCamera makeDefault fov={20} position={[0, 0, 20]} />
         <ambientLight intensity={1} />
         <AllPanelsGroup />
-
-        {/* <directionalLight position={[0, 4, 15]} intensity={1} />
-        <directionalLight position={[0, -4, 15]} intensity={1} /> */}
-
         <directionalLight position={[-3, 3, 5]} intensity={1} />
         <directionalLight position={[-3, 3, -5]} intensity={1} />
 
