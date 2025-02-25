@@ -77,7 +77,7 @@ const TextLight = ({ position, rotation, text, size, depth, scale, textMaterialP
         clearcoat={1}     // Adds a clear coat layer
         clearcoatRoughness={0.1}  // Polished surface
         emissive={'#08fae6'}
-        emissiveIntensity={1.5}
+        emissiveIntensity={2}
       />
     </mesh>
   );

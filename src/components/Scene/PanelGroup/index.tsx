@@ -314,27 +314,27 @@ function PanelGroup({ position, timeMultiplier, offset, zoffset = 0 }: Props) {
       <Back position={position} rotation={new THREE.Euler(0, 0, 0)} size={[1.4, 5.5]} scale={[1.4, 5.5, 0.8]} cushionMaterialProps={cushionMaterialProps} onPointerEnter={handleMouseEnter} onPointerLeave={handleMouseLeave} />
       
       <group position={position} scale={[1.0, 1.0, 1.0]} ref={panelGroupRef}>      
-        <Text text={'O'} position={[0, 1.9, 0.01]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
-        <TextBack text={'O'} position={[0, 1.9, -0.01]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
-        <TextBold text={'O'} position={[0, 1.9, 0]} scale={[1.1, 1.1, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
+        <Text text={'O'} position={[0, 2.1, 0.01]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
+        <TextBack text={'O'} position={[0, 2.1, -0.01]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
+        <TextBold text={'O'} position={[0, 2.1, 0]} scale={[1.1, 1.1, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
 
-        <Text text={'R'} position={[0, 0.8, 0.01]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
-        <TextBack text={'R'} position={[0, 0.8, -0.01]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
-        <TextBold text={'R'} position={[0, 0.8, 0]} scale={[1.1, 1.1, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
+        <Text text={'R'} position={[0, 1, 0.01]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
+        <TextBack text={'R'} position={[0, 1, -0.01]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
+        <TextBold text={'R'} position={[0, 1, 0]} scale={[1.1, 1.1, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
 
         
-        <TextLight text={"I"} position={[0, -0.15, 0.03]} scale={[1, 0.8, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
-        <TextBack text={"I"} position={[0, -0.15, -0.03]} scale={[1, 0.8, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
-        <TextBold text={"I"} position={[0, -0.15, 0]} scale={[1.2, 0.8, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.45} textMaterialProps={textMaterialProps} />
+        <TextLight text={"I"} position={[0, 0, 0.03]} scale={[1, 0.9, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
+        <TextBack text={"I"} position={[0, 0, -0.03]} scale={[1, 0.9, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
+        <TextBold text={"I"} position={[0, 0, 0]} scale={[1.4, 1, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.45} textMaterialProps={textMaterialProps} />
 
        
-        <TextLight text={'O'} position={[0, -0.55, 0.01]} scale={[1, 1, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
-        <TextBack text={'O'} position={[0, -0.55, -0.01]} scale={[1, 1, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
-        <TextBold text={'O'} position={[0, -0.55, 0]} scale={[1.1, 1.1, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
+        <TextLight text={'O'} position={[0, -1, 0.01]} scale={[1, 1, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
+        <TextBack text={'O'} position={[0, -1, -0.01]} scale={[1, 1, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
+        <TextBold text={'O'} position={[0, -1, 0]} scale={[1.1, 1.1, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
 
-        <Text text={'N'} position={[0, -1.6, 0.01]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
-        <TextBack text={'N'} position={[0, -1.6, -0.01]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
-        <TextBold text={'N'} position={[0, -1.6, 0]} scale={[1.1, 1.1, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
+        <Text text={'N'} position={[0, -2.05, 0.01]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
+        <TextBack text={'N'} position={[0, -2.05, -0.01]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
+        <TextBold text={'N'} position={[0, -2.05, 0]} scale={[1.1, 1.1, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} />
         {/* <TextSymbol text={'⏻'} position={[0, -2, 0.35]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} /> */}
         {/* <Panel size={0.9} scale={[1, 1.7, 0.2]} position={[0, 0, 0]} rotation={new THREE.Euler(0, 0, 0)} cushionMaterialProps={cushionMaterialProps} /> */}
         <Panel size={[1.4, 5.5, 0.8]} position={[0, 0, 0]} rotation={new THREE.Euler(0, 0, 0)} cushionMaterialProps={cushionMaterialProps} />
