@@ -1,5 +1,5 @@
-import React, { useRef } from 'react'
-import { Canvas, extend, useFrame } from '@react-three/fiber'
+import { useRef } from 'react'
+import { extend, useFrame } from '@react-three/fiber'
 import NeonMaterial from './NeonMaterial'
 import * as THREE from 'three'
 

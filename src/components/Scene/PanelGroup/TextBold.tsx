@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState, useRef } from 'react';
 import * as THREE from 'three';
 import { Font, FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
-import { extend, useFrame } from '@react-three/fiber';
 
 interface Props {
   position: [number, number, number];
