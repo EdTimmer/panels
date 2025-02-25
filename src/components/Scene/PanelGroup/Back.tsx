@@ -8,17 +8,6 @@ interface Props {
   scale: [number, number, number];
   onPointerEnter: () => void;
   onPointerLeave: () => void;
-  cushionMaterialProps: {
-    color: string;
-    metalness: number;
-    roughness: number;
-    opacity: number;
-    envMapIntensity: number;
-    emissive: string;
-    emissiveIntensity: number;
-    envMapImages: string[];
-    envMapImage: string;
-  },
 }
 
 const Back = ({ position, rotation, size, scale, onPointerEnter, onPointerLeave }: Props) => {
@@ -26,15 +15,13 @@ const Back = ({ position, rotation, size, scale, onPointerEnter, onPointerLeave 
 
   return (
     <mesh ref={shapeOneRef} position={position} rotation={rotation} scale={scale} renderOrder={1} onPointerEnter={onPointerEnter} onPointerLeave={onPointerLeave}>
-      {/* <sphereGeometry args={[size, 32, 32]} /> */}
-      {/* <planeGeometry args={size} /> */}
       <boxGeometry args={size} />
       <meshPhysicalMaterial
         color={'red'}
-        transmission={0}      // high transmission for translucency
+        transmission={0}
         transparent={true}      
         roughness={0}
-        opacity={0}      // adjust as needed for a smoother surface
+        opacity={0}
         side={THREE.DoubleSide}
       />
     </mesh>

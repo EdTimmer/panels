@@ -10,17 +10,9 @@ interface Props {
   text: string;
   size: number;
   depth: number;
-  textMaterialProps: {
-    color: string;
-    opacity: number;
-    roughness: number;
-    metalness: number;
-    emissive: string;
-    emissiveIntensity: number;
-  }
 }
 
-const Text = ({ position, rotation, text, size, depth, textMaterialProps }: Props) => {
+const Text = ({ position, rotation, text, size, depth }: Props) => {
   const meshRef = useRef<THREE.Mesh>(null!);
   const [font, setFont] = useState<Font | null>(null);    
 

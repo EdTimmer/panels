@@ -24,24 +24,6 @@ export const AppWrapper = styled.div`
   min-height: 100vh;
 `;
 
-export const AppMiddleColumn = styled.div`
-  position: relative;
-  z-index: 1;
-  /* padding-top: 10px; */
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  /* background-color: ${colors.eerieBlack}; */
-`;
-
-export const CenterSectionWrapper = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
-
 export const Row = styled.div`
   display: flex;
   flex-direction: row;

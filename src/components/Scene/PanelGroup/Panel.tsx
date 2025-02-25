@@ -8,20 +8,9 @@ interface Props {
   // size: number;
   size: [number, number, number];
   // scale: [number, number, number];
-  cushionMaterialProps: {
-    color: string;
-    metalness: number;
-    roughness: number;
-    opacity: number;
-    envMapIntensity: number;
-    emissive: string;
-    emissiveIntensity: number;
-    envMapImages: string[];
-    envMapImage: string;
-  },
 }
 
-const Panel = ({ position, rotation, size, cushionMaterialProps }: Props) => {
+const Panel = ({ position, rotation, size }: Props) => {
   const shapeOneRef = useRef<THREE.Mesh>(null);
 
   return (

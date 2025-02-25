@@ -1,17 +1,7 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Group, MathUtils } from 'three';
-import * as THREE from 'three';
-import { GUI } from 'lil-gui';
+import { Group } from 'three';
 import PanelGroup from './PanelGroup';
-
-
-// interface Props {
-//   isMouseEntered: boolean;
-//   isFacingUser: boolean;
-//   setIsFacingUser: (isFacingUser: boolean) => void;
-//   guiy: string;
-// }
 
 function AllPanelsGroup() {
   const allPanelsGroupRef = useRef<Group>(null);
@@ -23,28 +13,6 @@ function AllPanelsGroup() {
       allPanelsGroupRef.current.rotation.y -= 0.001;
     }
   });
-
-  // Animate the pivot group to rotate continuously about its local x-axis
-  // useFrame((state, delta) => {
-  //   if (pivotRef.current) {
-  //     pivotRef.current.rotation.x += delta  // adjust delta for speed
-  //   }
-  // })
-    // Set your amplitude (20° in radians) and frequency
-    const amplitude = 40 * Math.PI / 180  // about 0.349 radians
-    const frequency = 0.5  // adjust to make the oscillation faster or slower
-  
-    // Animate the pivot group with a sine function for oscillation
-    // useFrame((state) => {
-    //   if (pivotRef.current) {
-    //     const time = state.clock.getElapsedTime()
-    //     // Oscillate between -amplitude and +amplitude
-    //     pivotRef.current.rotation.x = amplitude * Math.sin(time * frequency)
-    //   }
-    // })
-
-  
-
 
   return (
     <group ref={pivotRef} position={[0, -5, 0]}>

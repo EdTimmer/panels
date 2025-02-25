@@ -11,17 +11,9 @@ interface Props {
   size: number;
   depth: number;
   scale: [number, number, number];
-  textMaterialProps: {
-    color: string;
-    opacity: number;
-    roughness: number;
-    metalness: number;
-    emissive: string;
-    emissiveIntensity: number;
-  }
 }
 
-const TextBold = ({ position, rotation, text, size, depth, scale, textMaterialProps }: Props) => {
+const TextBold = ({ position, rotation, text, size, depth, scale }: Props) => {
   const meshRef = useRef<THREE.Mesh>(null!);
   const [font, setFont] = useState<Font | null>(null);    
 
@@ -72,7 +64,6 @@ const TextBold = ({ position, rotation, text, size, depth, scale, textMaterialPr
       /> */}
       <meshPhysicalMaterial
         color={'#000'}
-        // color={'#f86efa'}
         metalness={1}
         roughness={0}
         reflectivity={1}
