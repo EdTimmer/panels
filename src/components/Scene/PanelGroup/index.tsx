@@ -5,7 +5,7 @@ import * as THREE from 'three';
 import Panel from './Panel';
 import Text from './Text';
 import TextLight from './TextLight';
-import Back from './Back';
+// import Back from './Back';
 import TextBold from './TextBold';
 import TextBack from './TextBack';
 
@@ -79,9 +79,9 @@ function PanelGroup({ position, timeMultiplier, offset, zoffset = 0 }: Props) {
   
   return (
     <group>
-      <Back position={position} rotation={new THREE.Euler(0, 0, 0)} size={[1.4, 5.5]} scale={[1.4, 5.5, 0.8]} onPointerEnter={handleMouseEnter} onPointerLeave={handleMouseLeave} />
+      {/* <Back position={position} rotation={new THREE.Euler(0, 0, 0)} size={[1.4, 5.5]} scale={[1.4, 5.5, 0.8]} onPointerEnter={handleMouseEnter} onPointerLeave={handleMouseLeave} /> */}
       
-      <group position={position} scale={[1.0, 1.0, 1.0]} ref={panelGroupRef}>      
+      <group position={position} scale={[1.0, 1.0, 1.0]} ref={panelGroupRef} onPointerEnter={handleMouseEnter} onPointerLeave={handleMouseLeave}>      
         <Text text={'O'} position={[0, 2.1, 0.01]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} />
         <TextBack text={'O'} position={[0, 2.1, -0.01]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} />
         <TextBold text={'O'} position={[0, 2.1, 0]} scale={[1.1, 1.1, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} />

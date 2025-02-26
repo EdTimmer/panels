@@ -21,7 +21,7 @@ const Back = ({ position, rotation, size, scale, onPointerEnter, onPointerLeave 
         transmission={0}
         transparent={true}      
         roughness={0}
-        opacity={0}
+        opacity={1}
         side={THREE.DoubleSide}
       />
     </mesh>
