@@ -1,11 +1,10 @@
 import { useRef, useEffect, useState } from 'react';
-import { useFrame } from '@react-three/fiber';
+import { ThreeEvent, useFrame } from '@react-three/fiber';
 import { Group, MathUtils } from 'three';
 import * as THREE from 'three';
 import Panel from './Panel';
 import Text from './Text';
 import TextLight from './TextLight';
-// import Back from './Back';
 import TextBold from './TextBold';
 import TextBack from './TextBack';
 
@@ -21,10 +20,12 @@ function PanelGroup({ position, timeMultiplier, offset, zoffset = 0 }: Props) {
 
   const [isMouseEntered, setIsMouseEntered] = useState(false);
 
-  const handleMouseEnter = () => {
+  const handleMouseEnter = (e: ThreeEvent<PointerEvent>) => {
+    e.stopPropagation();
     setIsMouseEntered(true);
   }
-  const handleMouseLeave = () => {
+  const handleMouseLeave = (e: ThreeEvent<PointerEvent>) => {
+    e.stopPropagation();
     setIsMouseEntered(false);
   }
 
@@ -78,9 +79,7 @@ function PanelGroup({ position, timeMultiplier, offset, zoffset = 0 }: Props) {
   });
   
   return (
-    <group>
-      {/* <Back position={position} rotation={new THREE.Euler(0, 0, 0)} size={[1.4, 5.5]} scale={[1.4, 5.5, 0.8]} onPointerEnter={handleMouseEnter} onPointerLeave={handleMouseLeave} /> */}
-      
+    <group>      
       <group position={position} scale={[1.0, 1.0, 1.0]} ref={panelGroupRef} onPointerEnter={handleMouseEnter} onPointerLeave={handleMouseLeave}>      
         <Text text={'O'} position={[0, 2.1, 0.01]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} />
         <TextBack text={'O'} position={[0, 2.1, -0.01]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} />
@@ -103,8 +102,6 @@ function PanelGroup({ position, timeMultiplier, offset, zoffset = 0 }: Props) {
         <Text text={'N'} position={[0, -2.05, 0.01]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} />
         <TextBack text={'N'} position={[0, -2.05, -0.01]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} />
         <TextBold text={'N'} position={[0, -2.05, 0]} scale={[1.1, 1.1, 1]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} />
-        {/* <TextSymbol text={'⏻'} position={[0, -2, 0.35]} rotation={new THREE.Euler(0, 0, 0)} size={0.8} depth={0.4} textMaterialProps={textMaterialProps} /> */}
-        {/* <Panel size={0.9} scale={[1, 1.7, 0.2]} position={[0, 0, 0]} rotation={new THREE.Euler(0, 0, 0)} cushionMaterialProps={cushionMaterialProps} /> */}
         <Panel size={[1.4, 5.5, 0.8]} position={[0, 0, 0]} rotation={new THREE.Euler(0, 0, 0)} />
       </group>
     </group>

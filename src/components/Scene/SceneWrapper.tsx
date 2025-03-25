@@ -24,7 +24,6 @@ const SceneWrapper = () => {
         <directionalLight position={[3, -3, 5]} intensity={1} />
         <directionalLight position={[3, -3, -5]} intensity={1} />
         <OrbitControls enableDamping enableZoom={false} />
-        {/* <Environment background files="/images/img_4.png" /> */}
         <EnvironmentImage />
       </Canvas>
     </div>        

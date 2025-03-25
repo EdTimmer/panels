@@ -43,7 +43,7 @@ const TextBack = ({ position, rotation, text, size, depth, scale }: Props) => {
     
       // Compute the bounding box of the text and center it
       geometry.computeBoundingBox();
-      geometry.center();  // This will center the text at the origin (0, 0, 0)
+      geometry.center();  
 
       return geometry;
     }, [font]);
@@ -52,22 +52,13 @@ const TextBack = ({ position, rotation, text, size, depth, scale }: Props) => {
 
   return (
     <mesh ref={meshRef} geometry={textGeometry} scale={scale || [1, 1, 1]} rotation={rotation} position={position} renderOrder={2}>
-      {/* <meshStandardMaterial 
-        metalness={textMaterialProps.metalness}
-        roughness={textMaterialProps.roughness}
-        color={textMaterialProps.color}
-        opacity={textMaterialProps.opacity}
-        transparent
-        emissive={textMaterialProps.emissive}
-        emissiveIntensity={textMaterialProps.emissiveIntensity}
-      /> */}
       <meshPhysicalMaterial
         color={'#f8fc02'}
         metalness={1}
         roughness={0}
         reflectivity={1}
-        clearcoat={1}     // Adds a clear coat layer
-        clearcoatRoughness={0.1}  // Polished surface
+        clearcoat={1}     
+        clearcoatRoughness={0.1}  
         emissive={'#f8fc02'}
         emissiveIntensity={2.5}
       />

@@ -1,21 +1,16 @@
 import styled from 'styled-components';
 import colors from './styles/colors';
-// import lakeImage from '/images/lake-purple.jpg';
 import japanImage from '/images/japan_9.jpg';
 
 export const AppWrapper = styled.div`
   position: relative;
   z-index: 1;
   font-family: 'Roboto Mono', monospace;
-  /* padding: 0 370px; */
-  /* width: 100%;
-  height: 1800px; */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   overflow: hidden;
-  /* background-color: ${colors.seasalt}; */
   background-image: url(${japanImage});
   background-size: cover;
   background-position: center;
@@ -32,10 +27,6 @@ export const Row = styled.div`
   margin-bottom: -100px;
   padding: 0;
   flex-wrap: wrap;
-
-  @media (min-width: 1024px) {
-    /* gap: 40rem; */
-  }
 `;
 
 export const Header = styled.h1`
@@ -58,40 +49,23 @@ export const HeaderContainer = styled.div`
 `;
 
 export const LogoOneContainer = styled.div`
-  /* border: 1px dashed ${colors.seasalt}; */
-  /* border-radius: 30rem; */
   width: 35rem;
   height: 40rem;
-  /* cursor: pointer; */
-  /* margin-top: 20rem; */
-  /* margin-left: 10rem; */
 `;
 
 export const LogoTwoContainer = styled.div`
-  /* border: 1px dashed ${colors.seasalt}; */
-  /* border-radius: 30rem; */
   width: 35rem;
   height: 40rem;
-  /* cursor: pointer; */
-  /* margin-top: 20rem; */
 `;
 
 export const ThreeDWebGroupContainer = styled.div`
-  /* border: 1px dashed ${colors.seasalt}; */
-  /* border-radius: 30rem; */
   width: 50rem;
   height: 25rem;
-  /* cursor: pointer; */
-  /* margin-right: 20rem; */
-  /* margin-top: -20rem; */
 `;
 
 export const DeloitteDigitalLogoContainer = styled.div`
-  /* border: 1px dashed ${colors.seasalt}; */
-  /* border-radius: 30rem; */
   width: 80rem;
   height: 40rem;
-  /* cursor: pointer; */
 
   @media (max-width: 450px) {
     width: 45rem;
@@ -110,8 +84,8 @@ export const BackgroundCanvas = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 0; /* Ensure background canvas is behind other content */
-  pointer-events: none; /* Prevent canvas from intercepting pointer events */
+  z-index: 0; 
+  pointer-events: none; 
 `;
 
 export const Title = styled.h1`
@@ -132,14 +106,24 @@ export const ContactRow = styled.div`
   margin-bottom: 3rem;
 `;
 
-export const WebLink = styled.a`
-  color: ${colors.seasalt};
-  font-family: 'Carlito', 'Roboto Mono', monospace;
-  font-size: 2.6rem;
-  text-decoration-line: underline;
-  text-underline-offset: 5px;
-  margin-left: 0.4rem;
-  /* z-index: 3; */
+export const WebLinkContainer = styled.div`
+  color: ${colors.seasalt};  
+  position: absolute;
+  bottom: 30px;
+  right: 40px;
+  font-size: 16px;
+  letter-spacing: 2px;
+
+  a {
+    font-family: 'Carlito', 'Roboto Mono', monospace;
+    color: #6c757dff;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+
+    &:hover {
+      color: #fff;
+    }
+  }
 `;
 
 export const Email = styled.p`
@@ -157,4 +141,3 @@ export const CenterSection = styled.div`
   justify-content: center;
   align-items: flex-start;
 `;
-

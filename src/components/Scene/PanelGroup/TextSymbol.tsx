@@ -51,22 +51,13 @@ const TextSymbol = ({ position, rotation, text, size, depth }: Props) => {
 
   return (
     <mesh ref={meshRef} geometry={textGeometry} rotation={rotation} position={position} renderOrder={2}>
-      {/* <meshStandardMaterial 
-        metalness={textMaterialProps.metalness}
-        roughness={textMaterialProps.roughness}
-        color={textMaterialProps.color}
-        opacity={textMaterialProps.opacity}
-        transparent
-        emissive={textMaterialProps.emissive}
-        emissiveIntensity={textMaterialProps.emissiveIntensity}
-      /> */}
       <meshPhysicalMaterial
         color={'#08fae6'}
         metalness={1}
         roughness={0}
         reflectivity={1}
-        clearcoat={1}     // Adds a clear coat layer
-        clearcoatRoughness={0.1}  // Polished surface
+        clearcoat={1}     
+        clearcoatRoughness={0.1}  
         emissive={'#08fae6'}
         emissiveIntensity={1.5}
       />

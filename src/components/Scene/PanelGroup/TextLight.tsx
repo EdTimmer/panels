@@ -23,7 +23,6 @@ const TextLight = ({ position, rotation, text, size, depth, scale }: Props) => {
     });
   }, []);
 
-    // Use `useMemo` to memoize the geometry creation and avoid recreation on every render
     const textGeometry = useMemo(() => {
       if (!font) return null;
   
@@ -41,9 +40,9 @@ const TextLight = ({ position, rotation, text, size, depth, scale }: Props) => {
   
       const geometry = new TextGeometry(text, textOptions);
     
-      // Compute the bounding box of the text and center it
+      
       geometry.computeBoundingBox();
-      geometry.center();  // This will center the text at the origin (0, 0, 0)
+      geometry.center();  
 
       return geometry;
     }, [font]);
@@ -52,22 +51,13 @@ const TextLight = ({ position, rotation, text, size, depth, scale }: Props) => {
 
   return (
     <mesh ref={meshRef} geometry={textGeometry} scale={scale} rotation={rotation} position={position} renderOrder={2}>
-      {/* <meshStandardMaterial 
-        metalness={textMaterialProps.metalness}
-        roughness={textMaterialProps.roughness}
-        color={textMaterialProps.color}
-        opacity={textMaterialProps.opacity}
-        transparent
-        emissive={textMaterialProps.emissive}
-        emissiveIntensity={textMaterialProps.emissiveIntensity}
-      /> */}
       <meshPhysicalMaterial
         color={'#08fae6'}
         metalness={1}
         roughness={0}
         reflectivity={1}
-        clearcoat={1}     // Adds a clear coat layer
-        clearcoatRoughness={0.1}  // Polished surface
+        clearcoat={1}    
+        clearcoatRoughness={0.1}  
         emissive={'#08fae6'}
         emissiveIntensity={2}
       />
